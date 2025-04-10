@@ -6,7 +6,7 @@ A full-stack web application built as part of our college's extra learning cours
 
 ## Features
 
-- User authentication system (login/registration)
+- Student registeration system (registration)
 - CRUD operations implementation
 - RESTful API with Express.js
 - React frontend with Vite
