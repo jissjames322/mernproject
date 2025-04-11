@@ -28,11 +28,13 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  padding: 1rem; /* Added padding for better spacing on mobile */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin: 0.5em 0; /* Added margin for better spacing */
 }
 
 button {
@@ -54,6 +56,57 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Media Queries for Responsive Design */
+
+/* Tablet and smaller devices */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5em; /* Smaller font size for tablets */
+  }
+
+  body {
+    padding: 0.5rem; /* Reduced padding */
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em; /* Even smaller font size for mobile */
+    line-height: 1.2; /* Adjusted line height */
+  }
+
+  button {
+    padding: 0.5em 1em; /* Smaller button padding */
+  }
+
+  body {
+    padding: 0.5rem;
+    place-items: flex-start; /* Align items to top on small screens */
+    min-height: 90vh; /* Slightly reduced min-height */
+  }
+}
+
+/* Very small mobile devices */
+@media (max-width: 320px) {
+  h1 {
+    font-size: 1.8em; /* Adjusted for very small screens */
+  }
+
+  button {
+    font-size: 0.9em; /* Smaller button text */
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 480px) and (orientation: landscape) {
+  body {
+    min-height: auto;
+    padding: 1rem;
+  }
+}
+
+/* Light mode adjustments */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
