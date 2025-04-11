@@ -1,7 +1,10 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
-const port = process.env.PORT || 4000;
-const app = express();
 import cors from "cors";
+import mongoose from "mongoose";
+
+const app = express();
 
 app.use(cors());
 
@@ -9,11 +12,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-import mongoose from "mongoose";
 const connectDB = () => {
   console.log("..........just started.............");
   mongoose
-    .connect(`mongodb://127.0.0.1:27017/collegeDB`)
+    .connect(process.env.MONGO_URI)
     .then(() => console.log(`-------MongoDB Connected------------`))
     .catch((error) => {
       console.error(error.message);
@@ -95,26 +97,24 @@ app.get("/getStudent/:rno", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-
-
 app.listen(3000, () => {
   console.log("............Server running on port 3000.................");
 });
 
- app.put("/updateStudent/:rno", (req, res) => {
-   const rno = req.params.rno;
-   monmodel1
-     .findOneAndUpdate(
-       { rollno: rno },
-       {
-         name: req.body.name,
-         gender: req.body.gender,
-         course: req.body.course,
-         address: req.body.address,
-         email: req.body.email,
-         contactno: req.body.contactno,
-       }
-     )
-     .then((students) => res.json(students))
-     .catch((err) => res.json(err));
- });
+app.put("/updateStudent/:rno", (req, res) => {
+  const rno = req.params.rno;
+  monmodel1
+    .findOneAndUpdate(
+      { rollno: rno },
+      {
+        name: req.body.name,
+        gender: req.body.gender,
+        course: req.body.course,
+        address: req.body.address,
+        email: req.body.email,
+        contactno: req.body.contactno,
+      }
+    )
+    .then((students) => res.json(students))
+    .catch((err) => res.json(err));
+});
