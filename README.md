@@ -121,4 +121,4 @@ _Contact form_
 
 <div align=center style=width:50 height=50 >
 
-[![View Demo](https://shields.io/badge/style-flat-red?&style=for-the-badge)(https://mernproject-frontend.netlify.app/)]
+[![View Demo](https://shields.io/badge/View-Demo-red?&style=for-the-badge)](https://mernproject-frontend.netlify.app/)
