@@ -42,6 +42,14 @@ A full-stack web application built as part of our college's extra learning cours
 
 Try for yourself :)
 
+### Deployment :
+
+Clone the repository :
+
+```bash
+git clone https://github.com/jissjames322/mernproject.git
+```
+
 ### Install dependencies:
 
 ```bash
