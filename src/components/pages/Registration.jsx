@@ -1,13 +1,19 @@
 import React from "react";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-import { useEffect } from "react";
+import { Card, Form, Button, Container, Row, Col } from "react-bootstrap";
 
 const Registration = () => {
   const [rollno, setRollno] = useState(null);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [contactno, setContactno] = useState("");
+  const [course, setCourse] = useState("MCA");
+  const [gender, setGender] = useState("");
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get("https://mernproject-backend-kmmt.onrender.com/getMaxrollno")
@@ -17,14 +23,7 @@ const Registration = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  const [name, setName] = useState();
-  const [address, setAddress] = useState();
-  const [email, setEmail] = useState();
-  const [contactno, setContactno] = useState();
 
-  const [course, setCourse] = useState("MCA");
-  const [gender, setGender] = useState();
-  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -39,154 +38,147 @@ const Registration = () => {
       })
       .then((result) => {
         console.log(result);
-        alert("registration completed successfully");
+        alert("Registration completed successfully");
         navigate("/StudDetails");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert("Registration failed. Please try again.");
+      });
   };
+
   return (
-    <div>
-      <center>
-        <br></br>
-        <br></br>
+    <Container className="py-5">
+      <Row className="justify-content-center">
+        <Col xs={12} md={8} lg={6}>
+          <Card className="shadow">
+            <Card.Body className="p-4">
+              <h2 className="text-center text-primary mb-4">
+                Student Registration
+              </h2>
 
-        <div className=" p-5 mt-5 bg-primary-subtle w-25 rounded">
-          <h2 className="text-decoration-underline text-success">
-            Register Here...
-          </h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="rollno">
-                <strong> Rollno</strong>
-              </label>
-              <input
-                type="text"
-                autoComplete="off"
-                name="rollno"
-                value={rollno}
-                readOnly
-                className="form-control rounded-0 text-center"
-                onChange={(e) => setRollno(e.target.value)}
-              />
-            </div>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    <strong>Roll No</strong>
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={rollno || ""}
+                    readOnly
+                    className="text-center"
+                  />
+                </Form.Group>
 
-            <div className="mb-3">
-              <label htmlFor="name">
-                <strong> Name</strong>
-              </label>
-              <input
-                type="text"
-                placeholder="Enter Name"
-                autoComplete="off"
-                name="name"
-                className="form-control"
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    <strong>Name</strong>
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+                </Form.Group>
 
-            <div className="mb-3">
-              <strong>Gender:</strong>
-              <fieldset required>
-                <div>
-                  <label>
-                    <input
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    <strong>Gender</strong>
+                  </Form.Label>
+                  <div>
+                    <Form.Check
+                      inline
                       type="radio"
+                      label="Male"
                       name="gender"
                       value="Male"
+                      checked={gender === "Male"}
                       onChange={() => setGender("Male")}
                       required
                     />
-                    Male
-                  </label>{" "}
-                  <label>
-                    <input
+                    <Form.Check
+                      inline
                       type="radio"
+                      label="Female"
                       name="gender"
                       value="Female"
+                      checked={gender === "Female"}
                       onChange={() => setGender("Female")}
                     />
-                    Female
-                  </label>
+                  </div>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    <strong>Course</strong>
+                  </Form.Label>
+                  <Form.Select
+                    value={course}
+                    onChange={(e) => setCourse(e.target.value)}
+                  >
+                    <option value="MCA">MCA</option>
+                    <option value="MBA">MBA</option>
+                    <option value="MSc">MSc</option>
+                  </Form.Select>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    <strong>Address</strong>
+                  </Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Enter Address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Label>
+                    <strong>Email</strong>
+                  </Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Enter Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
+                    title="Please enter a valid email address"
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-4">
+                  <Form.Label>
+                    <strong>Contact Number</strong>
+                  </Form.Label>
+                  <Form.Control
+                    type="tel"
+                    placeholder="Enter Contact Number"
+                    value={contactno}
+                    onChange={(e) => setContactno(e.target.value)}
+                    required
+                    pattern="[0-9]{10}"
+                    title="Please enter a 10-digit numeric contact number"
+                  />
+                </Form.Group>
+
+                <div className="d-grid">
+                  <Button variant="primary" type="submit" size="lg">
+                    Register
+                  </Button>
                 </div>
-              </fieldset>
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="course">
-                <strong> Course</strong>
-              </label>
-              <select
-                className="form-select"
-                value={course}
-                onChange={(e) => setCourse(e.target.value)}
-              >
-                <option value="MCA">MCA</option>
-                <option value="MBA">MBA</option>
-                <option value="MSc">MSc</option>
-              </select>
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="address">
-                <strong> Address</strong>
-              </label>
-
-              <textarea
-                name="address"
-                class="form-control"
-                placeholder="Enter Address"
-                rows="4"
-                onChange={(e) => setAddress(e.target.value)}
-                required
-              ></textarea>
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="email">
-                <strong> Emailid</strong>
-              </label>
-              <input
-                type="email"
-                placeholder="Enter Emailid"
-                autoComplete="off"
-                name="email"
-                className="form-control"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
-                title="Please enter a valid email address"
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="contactno">
-                <strong> Contact no</strong>
-              </label>
-              <input
-                type="text"
-                placeholder="Enter contactno"
-                autoComplete="off"
-                name="contactno"
-                className="form-control"
-                onChange={(e) => setContactno(e.target.value)}
-                required
-                pattern="[0-9]{10}"
-                title="Please enter a 10-digit numeric contact number"
-              />
-            </div>
-
-            <button type="submit" className="btn btn-success w-100">
-              Register
-            </button>
-          </form>
-        </div>
-        <br></br>
-        <br />
-        <br />
-      </center>
-      <br></br>
-    </div>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
