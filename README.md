@@ -121,5 +121,4 @@ _Contact form_
 
 <div align=center style=width:50 height=50 >
 
-[![](https://i.pinimg.com/736x/3f/ad/9e/3fad9e64e898db5b8c042b5e8344bf0e.jpg)](https://mernproject-frontend.netlify.app/)
-
+[![View Demo](https://shields.io/badge/style-flat-green?logo=appveyor&style=flat)(https://mernproject-frontend.netlify.app/)]
