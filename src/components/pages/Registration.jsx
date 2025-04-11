@@ -1,18 +1,16 @@
-import React from 'react'
+import React from "react";
 
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-
-import { useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-
-import { useEffect } from 'react'
+import { useEffect } from "react";
 
 const Registration = () => {
   const [rollno, setRollno] = useState(null);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/getMaxrollno")
+      .get("https://mernproject-backend-kmmt.onrender.com/getMaxrollno")
       .then((result) => {
         const new_rollno = result.data.maxValue + 1;
         setRollno(new_rollno);
@@ -30,7 +28,7 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/registration", {
+      .post("https://mernproject-backend-kmmt.onrender.com/registration", {
         rollno,
         name,
         gender,

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Axios from 'axios';
-import { useParams,useNavigate } from "react-router-dom";
-import { useState } from 'react'
+import Axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
 
 const Update = () => {
@@ -16,7 +16,7 @@ const Update = () => {
   const [gender, setGender] = useState("");
   useEffect(() => {
     axios
-      .get("http://localhost:3000/getStudent/" + rno)
+      .get("https://mernproject-backend-kmmt.onrender.com/getStudent/" + rno)
       .then((result) => {
         setName(result.data.name);
         setAddress(result.data.address);
@@ -32,14 +32,17 @@ const Update = () => {
   const updatestud = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:3000/updateStudent/" + rno, {
-        name,
-        gender,
-        course,
-        address,
-        email,
-        contactno,
-      })
+      .put(
+        "https://mernproject-backend-kmmt.onrender.com/updateStudent/" + rno,
+        {
+          name,
+          gender,
+          course,
+          address,
+          email,
+          contactno,
+        }
+      )
       .then((result) => {
         console.log(result);
         alert("Updated successfully.....");
@@ -178,4 +181,3 @@ const Update = () => {
 };
 
 export default Update;
-

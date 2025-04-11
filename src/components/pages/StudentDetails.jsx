@@ -7,13 +7,15 @@ const StudentDetails = () => {
   const [students, setStudents] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/getStudents")
+      .get("https://mernproject-backend-kmmt.onrender.com/getStudents")
       .then((result) => setStudents(result.data))
       .catch((err) => console.log(err));
   }, []);
   const DeleteHandler = (rno) => {
     axios
-      .delete("http://localhost:3000/deleteStudent/" + rno)
+      .delete(
+        "https://mernproject-backend-kmmt.onrender.com/deleteStudent/" + rno
+      )
       .then((result) => {
         console.log(result);
         alert("Student Details Deleted Successfully......");
