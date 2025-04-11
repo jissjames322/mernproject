@@ -121,4 +121,4 @@ _Contact form_
 
 <div align=center>
 
-[![ViewDEMO](https://mernproject-frontend.netlify.app/)]
+<button type="button" onclick="alert('Hello world!')">Click Me!</button>
