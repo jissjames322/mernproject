@@ -16,6 +16,7 @@ A full-stack web application built as part of our college's extra learning cours
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 <p align="left">
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
   <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
@@ -23,6 +24,7 @@ A full-stack web application built as part of our college's extra learning cours
 </p>
 
 ### Backend
+
 <p align="left">
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
   <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express" />
@@ -30,6 +32,7 @@ A full-stack web application built as part of our college's extra learning cours
 </p>
 
 ### Tools
+
 <p align="left">
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
   <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white" alt="Postman" />
@@ -37,24 +40,23 @@ A full-stack web application built as part of our college's extra learning cours
   <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="VS Code" />
 </p>
 
-
 Try for yourself :)
+
 ### Install dependencies:
 
 ```bash
 npm install
 ```
 
- ### Start the development server:
+### Start the development server:
 
- ```bash
+```bash
 npm run dev
- ```
+```
 
 - This will launch the website on http://localhost:5173
 
-
-#### In a separate terminal,start the backend server : 
+#### In a separate terminal,start the backend server :
 
 ```bash
 node src/server/server.js
@@ -62,51 +64,61 @@ node src/server/server.js
 
 - It will connect to the database which is MongoDB.
 
-
 #### If errors occurs in connecting to MongoDB
 
 - Check your path for MongoDB
-(Mine didn't work for sometime until i figured some way to fix it)
+  (Mine didn't work for sometime until i figured some way to fix it)
 
-- If you face a Connection refused error repair your path using this command : 
+- If you face a Connection refused error repair your path using this command :
 
 ```bash
 mongod --repair --dbpath /path/to/your/db
 ```
+
 This might fix the issue :)
 
-I created a folder in the C: drive ``\data\db``  (Not recommended) which helped me solve the issue.it worked somehow.
+I created a folder in the C: drive `\data\db` (Not recommended) which helped me solve the issue.it worked somehow.
 
 #### Ensure your services are running
 
 - Check MongoDB service (start) it if not running
+
 ```
 MongoDB : 27017 (portnumber)
 ```
+
 ## 📸 Screenshots
 
 ### Homepage
+
 ![Homepage](./screenshot/home.png)  
-*Landing page*
+_Landing page_
 
 ### Student Dashboard
+
 ![Student Details](./screenshot/stud_detail.png)  
-*Student data management interface*
+_Student data management interface_
 
 ### Registration Page
-![Registration](./screenshot/register.png)  
-*User sign-up form with validation*
 
+![Registration](./screenshot/register.png)  
+_User sign-up form with validation_
 
 ### Edit Page
+
 ![Edit](./screenshot/update.png)  
-*Update Page*
+_Update Page_
 
 ### About Us
+
 ![About Us](./screenshot/aboutus.png)  
-*Project and team information section*
+_Project and team information section_
 
 ### Contact Page
-![Contact Us](./screenshot/contactus.png)  
-*Contact form*
 
+![Contact Us](./screenshot/contactus.png)  
+_Contact form_
+
+<div align=center>
+
+[ ![ViewDEMO](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXBsYXktaWNvbiBsdWNpZGUtcGxheSI+PHBvbHlnb24gcG9pbnRzPSI2IDMgMjAgMTIgNiAyMSA2IDMiLz48L3N2Zz4=)](https://mernproject-frontend.netlify.app/)
